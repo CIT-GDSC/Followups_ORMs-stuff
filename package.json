@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Domains18/eccommerce.git"
+    "url": "https://github.com/Domains18/M-E-R-N-eccomerce"
   },
   "author": "domains18",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Domains18/eccommerce/issues"
+    "url": "https://github.com/Domains18/M-E-R-N-eccomerce/issues"
   },
-  "homepage": "https://github.com/Domains18/eccommerce#readme",
+  "homepage": "https://github.com/Domains18/Domains18/M-E-R-N#readme",
   "dependencies": {
     "colors": "^1.4.0",
     "dotenv": "^16.0.3",
