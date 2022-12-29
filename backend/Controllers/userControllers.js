@@ -61,8 +61,8 @@ const loginHandler = asyncHandler( async ( req, res)=>{
     }
 });
 
-const getUser = asyncHandler( async( req, res)=>{
-    res.json(200).status({ message: " user info"})
+const getUser = asyncHandler( async ( req, res)=>{
+    res.status(200).json(req.user)
 })
 
 module.exports = {
