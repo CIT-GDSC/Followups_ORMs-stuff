@@ -50,7 +50,7 @@ const loginHandler = asyncHandler( async ( req, res)=>{
             email: user.email
         })
     } else {
-        res.status(403).json({ message: " forbidden"});
+        res.status(406).json(`User with ${email} is not found`)
     }
 });
 
