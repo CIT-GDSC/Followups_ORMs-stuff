@@ -1,6 +1,7 @@
 const bcrypt = require('bcryptjs');
 const asyncHandler = require('express-async-handler');
 const Consumer = require('../Models/userModels');
+const jwt = require('jsonwebtoken');
 
 const registerHandler = asyncHandler(async (req, res) => {
   const { name, email, phoneNumber, password } = req.body;
@@ -33,8 +34,9 @@ const registerHandler = asyncHandler(async (req, res) => {
       _id: user.id,
       name: user.name,
       email: user.email,
+      token: generateToken(user._id),
     });
-  } else {
+  } else { 
     res.status(403);
     throw new Error('Invalid user Input');
   }
@@ -70,7 +72,13 @@ const getUser = asyncHandler( async (req, res)=>{
     res.status(200).json(req.user)
 });
 
+//generate token 
+const generateToken = (id) =>{
+    return jwt.sign({ id }, process.env.JWT_SECRET_KEY,{
+        expiresIn: '40d',
 
+    })
+}
 module.exports = {
     registerHandler,
     loginHandler,
