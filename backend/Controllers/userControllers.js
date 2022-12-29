@@ -1,29 +1,32 @@
 const asyncHandler = require ('express-async-handler');
-const User = [];
 
 
 //register user 
-const registerUser = asyncHandler( async (req, res)=>{
-    const { name, email, password} = req.body
-    if(!name || !email || !password){
+const registerHandler = asyncHandler( async (req, res)=>{
+    const { name, email, mobileNumber, password} = req.body
+    if(!name || !email || !password || mobileNumber){
         res.status(400).json({ message: "please add info"});
-    }
-    const user = req.body;
-    res.status(200)
-    res.json(user)
-    User.push(user);
-    console.log(User)
+    } 
+    res.status(200).json( req.body, 'registered')
 });
 
 //login user 
-const loginUser = asyncHandler( async ( req, res)=>{
+const loginHandler = asyncHandler( async ( req, res)=>{
     const { email, password} = req.body;
-    
 
-    
+    if(!email || !password){
+        res.status(401).json({ message: " Credentials cant be empty"})
+    }
+
+    res.json({ message: "user logged in"})
 });
 
+const getUser = asyncHandler( async( req, res)=>{
+    res.json(200).status({ message: " user info"})
+})
+
 module.exports = {
-    registerUser,
-    loginUser,
+    registerHandler,
+    loginHandler,
+    getUser
 }
