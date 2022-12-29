@@ -1,8 +1,10 @@
 const asyncHandler = require ('express-async-handler');
-const Consumer = require('../Models/userModels')
+const Consumer = require('../Models/userModels');
+const bcrypt = require('bcryptjs');
 
 //register user 
 const registerHandler = asyncHandler( async (req, res)=>{
+
     const { name, email, mobileNumber, password} = req.body
     if(!name || !email || !password || !mobileNumber){
         res.status(400).json({ message: "Field cannot be blank"});
@@ -14,13 +16,17 @@ const registerHandler = asyncHandler( async (req, res)=>{
     if(validateUser){
         res.status(406).json(`User with ${email} is already registered`)
     }
-    /// create user
+    //hash password
+    const salt = await bcrypt.genSalt(8);
+    const hashedPassword = await bcrypt.hash(password, salt);
 
+
+    // create user
     const user = await Consumer.create({
         name,
         email,
         mobileNumber,
-        password
+        password: hashedPassword 
     });
     if(user){
         res.status(200)
@@ -32,7 +38,7 @@ const registerHandler = asyncHandler( async (req, res)=>{
         });
     } else{
         res.status(403)
-        throw new Error ('Forbidden');
+        throw new Error ('Invalid user data');
     }
 });
 
@@ -42,7 +48,7 @@ const loginHandler = asyncHandler( async ( req, res)=>{
 
     // check if user exists
     const user = await  Consumer.findOne({email});
-    if(user){
+    if(user && (await bcrypt.compare(password, user.password))){
         res.status(200).json({
             _id : user.id,
             name: user.name,
@@ -50,7 +56,8 @@ const loginHandler = asyncHandler( async ( req, res)=>{
             email: user.email
         })
     } else {
-        res.status(406).json(`User with ${email} is not found`)
+        res.status(406)
+        throw new Error ("Invalid user credentials");
     }
 });
 
