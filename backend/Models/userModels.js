@@ -6,7 +6,7 @@ const consumerSchema = mongooose.Schema({
         type: String,
         required: [true, 'Please Add Name']
     },
-    mobileNumber: {
+    phoneNumber: {
         type: Number,
         required: [true, 'Please Add mobile Number']
     },
