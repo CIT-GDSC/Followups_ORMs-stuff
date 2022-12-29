@@ -36,15 +36,22 @@ const registerHandler = asyncHandler( async (req, res)=>{
     }
 });
 
-//login user 
+//login functionality 
 const loginHandler = asyncHandler( async ( req, res)=>{
-    const { email, password} = req.body;
+    const { email, mobileNumber, password} = req.body;
 
-    if(!email || !password){
-        res.status(401).json({ message: " Credentials cant be empty"})
+    // check if user exists
+    const user = await  Consumer.findOne({email});
+    if(user){
+        res.status(200).json({
+            _id : user.id,
+            name: user.name,
+            phone: user.mobileNumber,
+            email: user.email
+        })
+    } else {
+        res.status(403).json({ message: " forbidden"});
     }
-
-    res.json({ message: "user logged in"})
 });
 
 const getUser = asyncHandler( async( req, res)=>{
