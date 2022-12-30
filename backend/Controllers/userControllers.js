@@ -36,7 +36,7 @@ const registerHandler = asyncHandler(async (req, res) => {
       email: user.email,
       token: generateToken(user._id),
     });
-  } else { 
+  } else {
     res.status(403);
     throw new Error('Invalid user Input');
   }
@@ -54,33 +54,33 @@ const loginHandler = asyncHandler(async (req, res) => {
 
   //check if we have the user in the database
   const user = await Consumer.findOne({ email });
-  if( user && ( await bcrypt.compare(password, user.password))){
+  if (user && (await bcrypt.compare(password, user.password))) {
     res.json({
-        _id: user.id,
-        name: user.name,
-        email: user.email
+      _id: user.id,
+      name: user.name,
+      email: user.email
     });
 
-  } else{
+  } else {
     res.status(403)
     throw new Error('Invalid credentials')
   }
 
 });
 
-const getUser = asyncHandler( async (req, res)=>{
-    res.status(200).json(req.user)
+const getUser = asyncHandler(async (req, res) => {
+  res.status(200).json(req.user)
 });
 
 //generate token 
-const generateToken = (id) =>{
-    return jwt.sign({ id }, process.env.JWT_SECRET_KEY,{
-        expiresIn: '40d',
+const generateToken = (id) => {
+  return jwt.sign({ id }, process.env.JWT_SECRET_KEY, {
+    expiresIn: '40d',
 
-    })
+  })
 }
 module.exports = {
-    registerHandler,
-    loginHandler,
-    getUser
+  registerHandler,
+  loginHandler,
+  getUser
 }

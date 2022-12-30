@@ -19,6 +19,6 @@ const consumerSchema = mongooose.Schema({
         required: [true, 'Add your password']
     }
 
-}, {timestamps: true});
+}, { timestamps: true });
 
 module.exports = mongooose.model('Consumer', consumerSchema);
