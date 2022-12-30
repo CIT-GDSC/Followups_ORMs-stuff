@@ -14,7 +14,7 @@ function Login() {
                 <input type="text" name="" id="" placeholder="Email" />
                 <label htmlFor="password"></label>
                 <input type="text" placeholder="password" />
-                <button>Log In</button>
+                <input type="submit" value="Login" className="button" />
                 <div className="social">
                     <div className="go"><i className="fab fab-google">Google</i></div>
 

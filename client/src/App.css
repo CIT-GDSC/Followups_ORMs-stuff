@@ -79,7 +79,7 @@ input{
   height: 50px;
   width: 100%;
   background-color: rgba(255,255,255,0.07);
-  border-radius: 3px;
+  border-radius: 8px;
   padding: 0 10px;
   margin-top: 8px;
   font-size: 14px;
@@ -88,7 +88,7 @@ input{
 ::placeholder{
   color: black;
 }
-button{
+.button{
   margin-top: 50px;
   width: 100%;
   background-color: #ffffffff;
@@ -101,6 +101,9 @@ button{
   font-weight: 600;
   border-radius: 5px;
   cursor: pointer;
+}
+.button:hover{
+  background-color: #23a2f6
 }
 .social{
   margin-top: 30px;
