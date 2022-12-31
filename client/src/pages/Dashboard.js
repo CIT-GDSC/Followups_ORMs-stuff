@@ -3,12 +3,11 @@
 
 
 
-export const Dashboard (){
-	return(
-		<section className="Dashboard">
-			<div className="header">
-				
-			</div>
-		</section>
-	)
+
+function Dashboard() {
+  return (
+	<div>Dashboard</div>
+  )
 }
+
+export default Dashboard
