@@ -1,5 +1,5 @@
 /* dashboard */
-@import url('https://fonts.googleapis.com/css2?family=Andika&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Andika&family=Yeon+Sung&display=swap');
 .dashboard {
   display: flex;
   justify-content: space-between;
@@ -8,6 +8,9 @@
   width: 100vw;
   background-color: #080710;
   color: #eaf0fb;
+}
+.logo{
+  font-family: 'Yeon Sung', cursive;
 }
 .icon{
   cursor: pointer;
