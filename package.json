@@ -1,0 +1,19 @@
+{
+  "name": "full-stack-eccomerce",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Domains18/full-stack-eccomerce.git"
+  },
+  "author": "Domains18",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Domains18/full-stack-eccomerce/issues"
+  },
+  "homepage": "https://github.com/Domains18/full-stack-eccomerce#readme"
+}
